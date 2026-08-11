@@ -1,0 +1,47 @@
+EXPERIMENT 1.2 – SEARCH INSERT POSITION (LEETCODE 35)
+
+AIM:
+
+To find the index of a target element in a sorted array using the Binary Search algorithm. If the target is not present, determine the index where it should be inserted to maintain the sorted order.
+
+ALGORITHM:
+
+1.Start.
+2.Input the sorted integer array nums and the target value.
+3.Initialize low = 0 and high = nums.size() - 1.
+4.Repeat the following steps while low <= high.
+5.Calculate the middle index using:
+6.mid = low + (high - low) / 2.
+7.If nums[mid] is equal to the target, return mid.
+8.If nums[mid] is less than the target, search the right half by setting low = mid + 1.
+9.Otherwise, search the left half by setting high = mid - 1.
+10.If the target is not found, return low, which represents the correct insertion position.
+11.End.
+
+CODE:
+
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int low = 0;
+        int high = nums.size() - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (nums[mid] == target)
+                return mid;
+
+            else if (nums[mid] < target)
+                low = mid + 1;
+
+            else
+                high = mid - 1;
+        }
+
+        return low;
+    }
+};
